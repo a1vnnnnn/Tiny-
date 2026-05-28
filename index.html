@@ -7,6 +7,29 @@
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QC8L7C7NJG"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('admissionModal');
+    const closeBtn = document.querySelector('.close-modal');
+
+    // Show popup only if it hasn't been shown in this session
+    if (!sessionStorage.getItem('popupShown')) {
+        setTimeout(() => {
+            modal.style.display = 'flex';
+        }, 1500); // Small delay for better UX
+    }
+
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+        sessionStorage.setItem('popupShown', 'true');
+    };
+
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            sessionStorage.setItem('popupShown', 'true');
+        }
+    };
+});
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -18,6 +41,92 @@
     <link rel="icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
+        /* Popup Styles */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 40px;
+    position: relative;
+    text-align: center;
+    border: 10px solid var(--primary-yellow);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s;
+}
+
+.close-modal:hover { color: var(--primary-orange); }
+
+.poster-header {
+    background: var(--primary-orange);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    transform: rotate(-2deg);
+}
+
+.poster-body h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.admission-programs {
+    list-style: none;
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.admission-programs li {
+    background: var(--bg-light);
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-weight: 700;
+    color: var(--text-dark);
+    border: 2px solid var(--primary-green);
+}
+
+.poster-footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px dashed #eee;
+}
+
+.poster-footer p {
+    font-weight: 700;
+    color: var(--primary-orange);
+    margin-bottom: 15px;
+}
         :root {
             --primary-yellow: #FFD93D;
             --primary-orange: #FF8066;
@@ -321,6 +430,27 @@
     </style>
 </head>
 <body>
+    <!-- Admissions Popup -->
+<div id="admissionModal" class="modal-overlay">
+    <div class="modal-content floating">
+        <span class="close-modal">&times;</span>
+        <div class="poster-header">Admissions Open!</div>
+        <div class="poster-body">
+            <h3>Academic Year 2026 - 2027</h3>
+            <p>Enroll your little ones now for:</p>
+            <ul class="admission-programs">
+                <li>Playgroup</li>
+                <li>Nursery</li>
+                <li>Junior KG</li>
+                <li>Senior KG</li>
+            </ul>
+            <div class="poster-footer">
+                <p>Limited Seats Available</p>
+                <a href="tel:+919930599116" class="contact-btn">Call: +91 9930599116</a>
+            </div>
+        </div>
+    </div>
+</div>
 
     <nav>
         <div class="logo">
