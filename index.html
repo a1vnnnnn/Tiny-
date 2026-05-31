@@ -215,14 +215,6 @@
             text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
         }
 
-        h6 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            color: var(--primary-orange);
-            line-height: 1.1;
-            margin-bottom: 10px;
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.05);
-        }
-
         .intro-text {
             max-width: 800px;
             margin: 20px auto;
@@ -470,8 +462,17 @@
 
     <header>
         <div class="badge">Established in 1978</div>
-        <h1>Tiny Toddler's Gunjan<br>Nursery School</h1><br>
-        <h6>Malad East, Mumbai</h6>
+        
+        <h1>Tiny Toddler's Gunjan<br>PreSchool</h1>
+        
+        <!-- Added Location Subtitle -->
+        <p style="font-size: 1.3rem; font-weight: 700; color: var(--primary-green); margin-top: -10px; margin-bottom: 15px; font-family: 'Quicksand', sans-serif;">
+            📍 Malad East, Mumbai
+        </p>
+        
+        <!-- Existing SEO Header (Hidden visually but good for Google) -->
+        <h2 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Preschool, Playgroup & Nursery in Malad East, Mumbai</h2>
+        
         <p class="intro-text">Welcome to a world of joyful learning! For over four decades, we have been providing a safe, nurturing, and stimulating environment where your little ones can grow, play, and discover their full potential.</p>
         <div class="timing-pill">Timing: Opens at 9:30 am</div>
     </header>
